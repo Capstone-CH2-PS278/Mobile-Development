@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Recipefy</string>
+    <string name="search">Cari resep </string>
+    <string name="allrecipe">All Recipe</string>
+    <string name="favorite">Favorite</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="recommended">Recommended For You</string>
+    <string name="recipe_name">Nama Resep</string>
+    <string name="recipe_description">Deskripsi Resep</string>
+    <string name="title">RECIPEFY</string>
+    <string name="email">Email</string>
+    <string name="hint_email">Alamat email</string>
+    <string name="pass">Password</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
+    <string name="go_signUp">Go to SignUp</string>
+    <string name="about">just one step, you can cook \nthousands of delicious dishes</string>
+    <string name="username">Username</string>
+    <string name="hint_username">Username</string>
+    <string name="go_login">Go to Login</string>
+    <string name="signUp">Sign Up</string>
+</resources>

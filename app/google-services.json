@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "947982526064",
+    "project_id": "recipefy-a1804",
+    "storage_bucket": "recipefy-a1804.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947982526064:android:b182fd8b550252f11436b5",
+        "android_client_info": {
+          "package_name": "com.dicoding.recipefy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtTmgDGOVV0OhhU2vpnRut3j4L4P1vHAQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
