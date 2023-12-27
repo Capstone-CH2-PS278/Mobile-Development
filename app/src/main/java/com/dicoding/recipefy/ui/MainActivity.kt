@@ -23,7 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ivFavorite: ImageView
     private lateinit var searchBar: com.google.android.material.search.SearchBar
     private lateinit var binding: ActivityMainBinding
-    private lateinit var adapter: RecipesAdapter
+    private lateinit var adapter: RecommendAdapter
+    private lateinit var ivcamera: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Inisialisasi adapter
-        adapter = RecipesAdapter()
+        adapter = RecommendAdapter()
 
         // Set up RecyclerView
         val layoutManager = LinearLayoutManager(this)
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         ivIngredients = binding.ivIngredients
         searchBar = binding.searchBar
         ivFavorite = binding.ivFavorite
+        ivcamera  = binding.ivCamera
 
         // Set up click listeners
         ivAllRecipe.setOnClickListener {
@@ -73,6 +75,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        ivcamera.setOnClickListener{
+            val intent = Intent(this@MainActivity, CameraActivity::class.java)
+            startActivity(intent)
+        }
+
         // Fetch recipes
         getRecipe()
 
@@ -90,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getRecipe() {
         val apiService = ApiConfig.getApiService()
-        val call = apiService.getAllRecipe("recipes")
+        val call = apiService.getRecommendation()
 
         call.enqueue(object : Callback<RecipeResponse> {
             override fun onResponse(
@@ -101,10 +108,22 @@ class MainActivity : AppCompatActivity() {
                     val recipeResponse = response.body()
                     if (recipeResponse != null) {
                         val initialRecipes = recipeResponse.recipes
-                        adapter.submitList(initialRecipes)
+                        if (initialRecipes != null) {
+                            Log.d("MainActivity", "Number of recipes: ${initialRecipes.size}")
+                            adapter.submitList(initialRecipes)
+                        } else {
+                            Log.e("MainActivity", "Recipe list is null")
+                        }
+                    } else {
+                        Log.e("MainActivity", "Recipe response body is null")
                     }
+                } else {
+                    Log.e("MainActivity", "API call not successful")
+                    Log.e("MainActivity", "Response code: ${response.code()}")
+                    Log.e("MainActivity", "Response message: ${response.message()}")
                 }
             }
+
 
             override fun onFailure(call: Call<RecipeResponse>, t: Throwable) {
                 Log.e("MainActivity", "onFailure: ${t.message}")

@@ -31,6 +31,6 @@ data class RecipesItem(
 	@field:SerializedName("tools")
 	val tools: List<String>,
 
-	@field:SerializedName("likes")
-	val likes: Int
+	@field:SerializedName("updateTime")
+	val updateTime: Int
 )

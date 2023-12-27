@@ -52,4 +52,7 @@ interface ApiService {
         @Path("userId") userId: String
     ): Call<FavoriteListResponse>
 
+    @GET("recommendation")
+    fun getRecommendation(): Call<RecipeResponse>
+
 }
